@@ -26,7 +26,7 @@ $H_a$ There is a significant difference in average score on the WORDSUM test bet
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
   
-A variable analysis will be conducted for the data set "scores" to determine if there is any difference in Wordsum test scores (WORDSUM) - a numerical variable - among those with varying levels of educational attainment (DEGREE) - a factor variable. We will be using a box plot to view a broad picture of our data and spot any patterns, summary info (mean, standard deviation, etc.) to compare the numerical data of each factor, and a one-way ANOVA test and TukeyHSD plot to determine whether the null or the alternate hypothesis is true.  
+A variable analysis will be conducted for the data set "scores" to determine if there is any difference in Wordsum test scores (WORDSUM) - a numerical variable - among those with varying levels of educational attainment (DEGREE) - a factor variable. We will be using a box plot to view a broad picture of our data and spot any patterns, summary info (mean, standard deviation, etc.) to compare the numerical data of the test scores of each degree level, and a one-way ANOVA test and TukeyHSD plot to determine how many degree levels, if any, are different from each other and thus whether the null or the alternate hypothesis is true.  
   
 # Results
 
@@ -37,7 +37,15 @@ A variable analysis will be conducted for the data set "scores" to determine if 
 ### Graphical Descriptive Results
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+  
+```{r}
+basicCN <- ggplot(scores,aes(x=DEGREE,y=WORDSUM))
 
+basicCN + geom_boxplot(notch=FALSE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Degree vs wordsum score")
+```
+  
+The top of the box in the box plot that corresponds to the LT HIGH SCHOOL Wordsum scores does not touch the bottom of the box of the JUNIOR COLLEGE or the GRADUATE scores. It does touch the bottom of the box for BACHELOR, but just barely. These non-contacts mean that there is some sort of difference between the light high school scores and the junior college, graduate, and bachelor scores. The HIGH SCHOOL box plot's box barely touches the bottom of the JUNIOR COLLEGE box and does not even reach the bottom of the GRADUATE box. It is also relatively far from the median score of the BACHELOR box plot. BACHELOR, GRADUATE, and JUNIOR COLLEGE scores don't seem to differ much from each other since their boxes all overlap, and neither do HIGH SCHOOL and LT HIGH SCHOOL's since their boxes also overlap. The numerical and inferential results will show us these differences and similarities. 
+    
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
