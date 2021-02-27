@@ -26,7 +26,7 @@ $H_a$ There is a significant difference in average score on the WORDSUM test bet
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
   
-A variable analysis will be conducted for the data set "scores" to determine if there is any difference in Wordsum test scores (WORDSUM) - a numerical variable - among those with varying levels of educational attainment (DEGREE) - a factor variable. We will be using a box plot to view a broad picture of our data and spot any patterns, summary info (mean, standard deviation, etc.) to compare the numerical data of the test scores of each degree level, and a one-way ANOVA test and TukeyHSD plot to determine how many degree levels, if any, are different from each other and thus whether the null or the alternative hypothesis is true.  
+A variable analysis will be conducted for the data set "scores" to determine if there is any difference in Wordsum test scores (WORDSUM) - a numerical variable - among those with varying levels of educational attainment (DEGREE) - a factor variable. We will be using a box plot to view a broad picture of our data and spot any patterns, summary info (mean, standard deviation, etc.) to compare the numerical data of the test scores of each degree level, and a one-way ANOVA test and TukeyHSD plot to determine whether the null or the alternative hypothesis is true and what levels of DEGREE, if any, are different from each other.
   
 # Results
 
@@ -66,6 +66,13 @@ summary.aov(model1)
 ```
   
 The null hypothesis states that there is no difference between the average score on the WORDSUM test and level of schooling (DEGREE), while the alternative hypothesis states that there is a significant difference in the average score on the WORDSUM test between at least two levels of DEGREE. The p-value, 0.000236, is a very low number. This number represents the probability that there is no difference between the average score on the WORDSUM test and degree level. Thus, we reject the null in favor of the alternative hypothesis: there IS a significant difference in the average score on the WORDSUM test between at least two levels of DEGREE.
+  
+```{r}
+par(mar = c(3, 16, 2, 2))
+plot(TukeyHSD(model1), las=2)
+```
+  
+At the 95% confidence level, HIGH SCHOOL and GRADUATE as well as LT HIGH SCHOOL and GRADUATE are the pairs with average Wordsum scores that are different since their confidence intervals do not touch 0, represented by the dotted line in this plot. The remaining 8 pairs do not differ significantly since their intervals include 0.   
   
 # Discussion and Conclusion
 
