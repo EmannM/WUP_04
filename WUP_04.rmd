@@ -1,7 +1,7 @@
 ---
 title: "WUP_04"
 author: "Emann Malik"
-date: "February 26, 2021"
+date: "February 27, 2021"
 output:
   html_document:
     df_print: paged
@@ -11,7 +11,7 @@ output:
 require(knitr)
 require(tidyverse)
 require(tigerstats)
-
+scores <- read.csv(file = "GSScsv.csv")
 ```
 
 # Introduction
@@ -25,7 +25,9 @@ $H_a$ There is a significant difference in average score on the WORDSUM test bet
 # Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
-
+  
+A variable analysis will be conducted for the data set "scores" to determine if there is any difference in Wordsum test scores (WORDSUM) - a numerical variable - among those with varying levels of educational attainment (DEGREE) - a factor variable. We will be using a box plot to view a broad picture of our data and spot any patterns, summary info (mean, standard deviation, etc.) to compare the numerical data of each factor, and a one-way ANOVA test and TukeyHSD plot to determine whether the null or the alternate hypothesis is true.  
+  
 # Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
